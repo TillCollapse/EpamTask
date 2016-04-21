@@ -1,9 +1,6 @@
+package myconsole;
 
 public interface ConsoleInterface {
-	void cwd();
-
-	void reset();
-
 	void dir();
 
 	void target();
