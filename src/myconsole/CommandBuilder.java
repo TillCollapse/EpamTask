@@ -1,0 +1,46 @@
+package myconsole;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CommandBuilder {
+	private Map<String, Command> commandMap;
+
+	public CommandBuilder() {
+		commandMap = new HashMap<String, Command>();
+		initCommandMap();
+	}
+
+	private void initCommandMap() {
+		try {
+			commandMap.put("prompt", new PromptCommand());
+			commandMap.put("dir", new DirCommand());
+			commandMap.put("tree", new TreeCommand());
+			commandMap.put("cd", new CdCommand());
+			commandMap.put("exit", new ExitCommand());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Map<String, Command> getCommandMap() {
+		return commandMap;
+	}
+
+	public List<ObservableInterface> getObservableObjects() {
+		List<ObservableInterface> observables = new ArrayList<ObservableInterface>();
+		for (Command item : commandMap.values()) {
+			if (item instanceof ObservableInterface) {
+				observables.add((ObservableInterface) item);
+			}
+		}
+		return observables;
+	}
+
+	public Command getSpecialObject(String name) {
+		return commandMap.get(name);
+	}
+
+}
