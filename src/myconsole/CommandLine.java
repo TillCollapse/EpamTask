@@ -14,8 +14,8 @@ public class CommandLine implements ObserverInterface {
 	CommandBuilder commandBuilder;
 	CommandHandler commandHandler;
 
-	public CommandLine() {
-		commandBuilder = new CommandBuilder();
+	public CommandLine(CommandBuilder commandBuilder) {
+		this.commandBuilder = commandBuilder;
 		commandHandler = new CommandHandler(commandBuilder.getCommandMap());
 	}
 

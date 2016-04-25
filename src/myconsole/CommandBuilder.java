@@ -1,5 +1,6 @@
 package myconsole;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,10 @@ public class CommandBuilder {
 		commandMap = new HashMap<String, Command>();
 		initCommandMap();
 	}
+	public CommandBuilder(File path) {
+		commandMap = new HashMap<String, Command>();
+		initCommandMap(path);
+	}
 
 	private void initCommandMap() {
 		try {
@@ -20,6 +25,17 @@ public class CommandBuilder {
 			commandMap.put("tree", new TreeCommand());
 			commandMap.put("cd", new CdCommand());
 			commandMap.put("exit", new ExitCommand());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	private void initCommandMap(File path) {
+		try {
+			commandMap.put("prompt", new PromptCommand(path));
+			commandMap.put("dir", new DirCommand(path));
+			commandMap.put("tree", new TreeCommand(path));
+			commandMap.put("cd", new CdCommand(path));
+			commandMap.put("exit", new ExitCommand(path));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

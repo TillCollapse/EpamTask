@@ -7,6 +7,10 @@ public class DirCommand extends Command {
 
 	}
 
+	public DirCommand(File path) {
+		super(path);
+	}
+
 	public void execute() {
 		System.out.println("Content of " + getPath().getAbsolutePath());
 		File[] list = getPath().listFiles();

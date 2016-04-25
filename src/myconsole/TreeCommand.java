@@ -9,6 +9,10 @@ public class TreeCommand extends Command {
 
 	}
 
+	public TreeCommand(File path) {
+		super(path);
+	}
+
 	@Override
 	public void execute() {
 		try {

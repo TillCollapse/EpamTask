@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CdCommand extends Command implements ObservableInterface {
-	String state;
+	private String state;
 	private List<ObserverInterface> observers;
 	public CdCommand() throws Exception {
+		observers = new ArrayList<ObserverInterface>();
+	}
+
+	public CdCommand(File path) {
+		super(path);
 		observers = new ArrayList<ObserverInterface>();
 	}
 
@@ -23,7 +28,7 @@ public class CdCommand extends Command implements ObservableInterface {
 	private void directoryUp() {
 		setPath(getPath().getParentFile());
 		state = getPath().getAbsolutePath() + ">";
-		System.out.println(state);
+		//System.out.println(state);
 		notifyObservers();
 	}
 
@@ -32,7 +37,7 @@ public class CdCommand extends Command implements ObservableInterface {
 		if (file.exists() && file.isDirectory()) {
 			setPath(file);
 			state = getPath().getAbsolutePath() + ">";
-			System.out.println(state);
+			//System.out.println(state);
 			notifyObservers();
 		} else {
 			System.out.println("Directory does not exist");

@@ -1,5 +1,6 @@
 package myconsole;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,11 @@ public class PromptCommand extends Command implements ObservableInterface {
 	private List<ObserverInterface> observers;
 
 	public PromptCommand() throws Exception {
+		observers = new ArrayList<ObserverInterface>();
+	}
+
+	public PromptCommand(File path) {
+		super(path);
 		observers = new ArrayList<ObserverInterface>();
 	}
 

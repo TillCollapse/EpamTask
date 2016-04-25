@@ -8,7 +8,9 @@ abstract class Command {
 	public Command() throws Exception {
 		setPath(new File(".").getCanonicalFile());
 	}
-
+	public Command(File path) { 
+		setPath(path);
+	}
 	public void execute() {
 		System.out.println("This command need option ");
 	}
